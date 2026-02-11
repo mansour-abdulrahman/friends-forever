@@ -7,62 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loader"></div>
-        <p>جاري التحميل... ✨</p>
-        <div class="loading-progress">
-            <div class="loading-bar" id="loadingBar"></div>
-        </div>
-    </div>
-
     <!-- شاشة البداية -->
-    <div id="startScreen" class="hidden">
+    <div id="startScreen">
         <h2>اضغط للدخول 💙</h2>
         <p class="hint">✨ اكتشف المفاجآت المخفية ✨</p>
     </div>
 
-    <!-- أزرار التحكم العلوية -->
-    <div id="controlButtons" class="control-buttons hidden">
-        <!-- زر تبديل الوضع الليلي/النهاري -->
-        <button id="themeToggle" class="theme-btn">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-        </button>
-        
-        <!-- زر الوضع الصامت -->
-        <button id="muteToggle" class="mute-btn">
-            <span class="sound-on">🔊</span>
-            <span class="sound-off">🔇</span>
-        </button>
-        
-        <!-- زر تخطي الأنيميشن -->
-        <button id="skipAnimations" class="skip-btn" title="تخطي الأنيميشنات">
-            ⏩
-        </button>
-    </div>
+    <!-- زر تبديل الوضع الليلي/النهاري -->
+    <button id="themeToggle" class="theme-btn hidden">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+    </button>
 
     <!-- المحتوى الرئيسي -->
     <div class="container hidden" id="mainContent">
-        <!-- إحصائيات الصداقة -->
-        <div class="friendship-stats">
-            <div class="stat-card">
-                <div class="stat-icon">📅</div>
-                <div class="stat-value" id="daysSince">0</div>
-                <div class="stat-label">يوم من الصداقة</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">🎯</div>
-                <div class="stat-value" id="totalScore">0</div>
-                <div class="stat-label">مجموع النقاط</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-value" id="achievementsCount">0</div>
-                <div class="stat-label">إنجازات</div>
-            </div>
-        </div>
-
         <!-- النص السحري -->
         <h1 id="magicText">
             صداقتنا كنز لا تقدر المسافات على اخذه
@@ -70,26 +28,6 @@
         
         <!-- الأسماء -->
         <p class="names">عبد الرحمن / منصور</p>
-
-        <!-- عداد المسافة (جديد) -->
-        <div class="distance-tracker">
-            <h3>🌍 المسافة بيننا</h3>
-            <div class="distance-display">
-                <div class="location">
-                    <span class="flag">🇱🇧</span>
-                    <span>عبد الرحمن</span>
-                </div>
-                <div class="distance-line">
-                    <div class="distance-value" id="distanceValue">-- كم</div>
-                    <div class="distance-animation"></div>
-                </div>
-                <div class="location">
-                    <span class="flag">🌎</span>
-                    <span>منصور</span>
-                </div>
-            </div>
-            <button id="updateDistance" class="update-btn">تحديث الموقع 📍</button>
-        </div>
 
         <!-- الرسائل المخفية التفاعلية -->
         <div class="hidden-messages">
@@ -141,7 +79,7 @@
             <div class="gallery-3d" id="gallery3D">
                 <div class="photo-card" data-flip="الذكرى الأولى: يوم لا يُنسى معك! 🎉">
                     <div class="photo-front">
-                        <div class="photo-placeholder">📷</div>
+                        <img src="images/photo1.jpg" alt="photo1">
                     </div>
                     <div class="photo-back">
                         <p>الذكرى الأولى: يوم لا يُنسى معك! 🎉</p>
@@ -149,7 +87,7 @@
                 </div>
                 <div class="photo-card" data-flip="أجمل الأوقات كانت برفقتك 🌟">
                     <div class="photo-front">
-                        <div class="photo-placeholder">📷</div>
+                        <img src="images/photo2.jpg" alt="photo2">
                     </div>
                     <div class="photo-back">
                         <p>أجمل الأوقات كانت برفقتك 🌟</p>
@@ -157,7 +95,7 @@
                 </div>
                 <div class="photo-card" data-flip="ذكريات لا تُمحى من القلب أبدًا 💙">
                     <div class="photo-front">
-                        <div class="photo-placeholder">📷</div>
+                        <img src="images/photo3.jpg" alt="photo3">
                     </div>
                     <div class="photo-back">
                         <p>ذكريات لا تُمحى من القلب أبدًا 💙</p>
@@ -173,23 +111,18 @@
             <!-- لعبة اجمع القلوب -->
             <div class="game-container">
                 <h3>💙 اجمع قلوب الصداقة</h3>
-                <p class="game-instruction">حرك الماوس أو اللمس لجمع القلوب! 🎯</p>
+                <p class="game-instruction">حرك الماوس لجمع القلوب! 🎯</p>
                 <canvas id="gameCanvas"></canvas>
-                <div class="game-stats">
-                    <div class="game-score">النقاط: <span id="score">0</span></div>
-                    <div class="game-high-score">الأفضل: <span id="highScore">0</span></div>
-                </div>
+                <div class="game-score">النقاط: <span id="score">0</span></div>
                 <button id="startGame" class="game-btn">ابدأ اللعبة</button>
             </div>
 
             <!-- لعبة تخمين الذكريات -->
             <div class="memory-game">
                 <h3>🧩 لعبة تخمين الذكريات</h3>
-                <div class="memory-stats">
-                    <span>المحاولات: <span id="movesCount">0</span></span>
-                    <span>الوقت: <span id="timerDisplay">00:00</span></span>
+                <div class="memory-grid" id="memoryGrid">
+                    <!-- سيتم ملؤها بالجافاسكريبت -->
                 </div>
-                <div class="memory-grid" id="memoryGrid"></div>
                 <button id="resetMemory" class="game-btn">إعادة اللعب</button>
             </div>
         </div>
@@ -203,7 +136,6 @@
                     <p>رسالة سرية من الماضي</p>
                     <p class="unlock-date">تُفتح في: <span id="unlockDate">31/12/2025</span></p>
                     <div class="countdown" id="countdown"></div>
-                    <div class="hint-text">💡 تلميح: كلمة من 5 حروف تعني الرابطة بيننا</div>
                     <input type="text" id="secretCode" placeholder="أدخل الرمز السري" class="secret-input">
                     <button id="unlockBtn" class="unlock-btn">فتح الكبسولة 🔓</button>
                 </div>
@@ -218,35 +150,23 @@
                         <p>في انتظار لقائنا القادم! 🌟</p>
                         <p class="signature">- صديقك للأبد، عبد الرحمن</p>
                     </div>
-                    <button id="shareMessage" class="share-btn">مشاركة على واتساب 💚</button>
                 </div>
             </div>
         </div>
 
-        <!-- قسم الإنجازات (جديد) -->
-        <div class="achievements-section">
-            <h2>🏆 إنجازاتنا معاً</h2>
-            <div class="achievements-grid" id="achievementsGrid">
-                <!-- سيتم ملؤها بالجافاسكريبت -->
-            </div>
-        </div>
-
-        <!-- معرض الصور القديم مع Placeholder -->
+        <!-- معرض الصور القديم (مع تأثيرات محسنة) -->
         <div class="gallery">
-            <div class="gallery-item">
-                <div class="photo-placeholder fade-img" data-speed="0.1">📷</div>
-            </div>
-            <div class="gallery-item">
-                <div class="photo-placeholder fade-img" data-speed="0.2">📷</div>
-            </div>
-            <div class="gallery-item">
-                <div class="photo-placeholder fade-img" data-speed="0.3">📷</div>
-            </div>
+            <img src="images/photo1.jpg" class="fade-img" data-speed="0.1">
+            <img src="images/photo2.jpg" class="fade-img" data-speed="0.2">
+            <img src="images/photo3.jpg" class="fade-img" data-speed="0.3">
         </div>
     </div>
 
     <!-- Canvas للـ particles -->
     <canvas id="particlesCanvas"></canvas>
+    
+    <!-- Canvas للخلفية المتحركة -->
+    <canvas id="travelCanvas"></canvas>
     
     <!-- Canvas للنجوم المتلألئة -->
     <canvas id="starsCanvas"></canvas>
@@ -255,9 +175,6 @@
     <audio id="music" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
-
-    <!-- نظام الإشعارات -->
-    <div id="notificationContainer" class="notification-container"></div>
 
     <!-- سكريبت التحكم -->
     <script src="script.js"></script>
